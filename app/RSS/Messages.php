@@ -52,7 +52,7 @@ class Messages
                     $info = $this->getMediaInfo($message);
                     $parsedMessage = [
                         'url' => $this->getMessageUrl($message),
-                        'title' => null,
+                        'title' => '',
                         'description' => $description,
                         'media' => [$info],
                         'preview' => [
