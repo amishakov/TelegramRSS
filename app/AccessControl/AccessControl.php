@@ -5,9 +5,11 @@ namespace TelegramRSS\AccessControl;
 use Revolt\EventLoop;
 use TelegramRSS\Config;
 
+use function Amp\async;
 use function Amp\ByteStream\splitLines;
 use function Amp\File\isFile;
 use function Amp\File\openFile;
+use function Amp\Future\awaitAll;
 
 class AccessControl
 {
@@ -21,8 +23,8 @@ class AccessControl
         ROOT_DIR . '/cache/media-users.cache' => 'mediaUsers',
     ];
 
-    /** @var float Interval to remove old clients: 60 seconds */
-    private const CLEANUP_INTERVAL_MS = 60.0;
+    /** @var float Interval to remove old clients: 300 seconds */
+    private const CLEANUP_INTERVAL_MS = 300.0;
     private int $rpmLimit;
     private int $errorsLimit;
 
